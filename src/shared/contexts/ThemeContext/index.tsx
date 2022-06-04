@@ -1,25 +1,25 @@
-import { useContext } from "react";
-import { createContext, useState, useCallback } from "react";
-import { ThemeProvider as ThemeMaterialProvider } from "@emotion/react";
-import { Box, Theme } from "@mui/material";
+import { useContext } from 'react';
+import { createContext, useState, useCallback } from 'react';
+import { ThemeProvider as ThemeMaterialProvider } from '@emotion/react';
+import { Box, Theme } from '@mui/material';
 
-import { IThemeContextData, Props } from "./interfaces";
+import { IThemeContextData, Props } from './interfaces';
 import { DarkTheme } from '../../themes/Dark';
 import { LightTheme } from '../../themes/Light';
 
 
-const ThemeContext = createContext<IThemeContextData>({} as IThemeContextData)
+const ThemeContext = createContext<IThemeContextData>({} as IThemeContextData);
 
-const ThemeProvider: React.FC<Props> = ({children})=> {
+const ThemeProvider: React.FC<Props> = ({ children })=> {
 
   const [theme, setTheme] = useState<Theme>(LightTheme);
 
   const toggleTheme = useCallback(() => {
     if(theme === DarkTheme){
-      setTheme(LightTheme)
+      setTheme(LightTheme);
     }
     else{
-      setTheme(DarkTheme)
+      setTheme(DarkTheme);
     }
   }, [theme]);
 
@@ -37,6 +37,6 @@ const ThemeProvider: React.FC<Props> = ({children})=> {
 const useTheme = () => {
   const context = useContext(ThemeContext);
   return context;
-}
+};
 
 export {useTheme, ThemeProvider};
