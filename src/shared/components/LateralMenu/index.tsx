@@ -1,14 +1,40 @@
 import { Avatar, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
+import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { useDrawer } from '../../contexts';
-import { Props } from './interfaces';
+import { Props, IListItemLinkProps } from './interfaces';
+
+
+const ListItemLink: React.FC<IListItemLinkProps> = ({icon, label, to, onClick}) => {
+  const navigate = useNavigate();
+
+  const resolvedPath = useResolvedPath(to);
+  const match = useMatch(resolvedPath.pathname);
+
+  const handleClick = () => {
+    navigate(to);
+    onClick?.();
+  };
+
+  return(
+    <ListItemButton
+      selected={!!match}
+      onClick={handleClick}
+    >
+      <ListItemIcon>
+        <Icon>{icon}</Icon>
+      </ListItemIcon>
+      <ListItemText primary={label} />
+    </ListItemButton>
+  );
+};
 
 export const LateralMenu: React.FC<Props> = ({children}) => {
 
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const { isDrawerOpen, toggleDrawer } = useDrawer();
+  const { isDrawerOpen, toggleDrawer, drawerOptions, setDrawerOptions } = useDrawer();
 
   return(
     <>
@@ -51,19 +77,22 @@ export const LateralMenu: React.FC<Props> = ({children}) => {
                 flexDirection: 'column',
               }
             }>
-            <List component="nav" aria-label="main mailbox folders" sx={{padding: 0}}>
-              <ListItemButton
-                selected={false}
-                onClick={(event) => event}
-              >
-                <ListItemIcon>
-                  <Icon>home</Icon>
-                </ListItemIcon>
-                <ListItemText primary="Home" />
-              </ListItemButton>
+            <List 
+              component="nav" 
+              aria-label="main mailbox folders" 
+              sx={{padding: 0}}>
+
+              { drawerOptions?.map(({icon, label, path}) => (
+                <ListItemLink
+                  key={path} 
+                  icon={icon}
+                  label={label}
+                  to={path}
+                  onClick={smDown ? toggleDrawer : undefined} />
+              )) }
+
             </List>
           </Box>
-
         </Box>
       </Drawer>
       <Box marginLeft={ smDown ? 0 : theme.spacing(28)} >

@@ -38,7 +38,6 @@
             "always"
         ],
         "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off",
-        "linebreak-style": "off"
+        "react/prop-types": "off"
     }
 }
