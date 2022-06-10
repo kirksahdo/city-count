@@ -9,7 +9,7 @@ import { useDrawer } from '../shared/contexts';
 
 export const AppRoutes = () => {
 
-  const {toggleDrawer, setDrawerOptions} = useDrawer();
+  const { toggleDrawer, setDrawerOptions } = useDrawer();
 
   useEffect(() => {
     setDrawerOptions([
@@ -28,9 +28,9 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path="/" element={ <Button variant="contained" color="primary" onClick={toggleDrawer}>Toggle Drawer</Button> } />
-      <Route path="/city" element={ <Button variant="contained" color="primary" onClick={toggleDrawer}>Toggle Drawer</Button> } />
-      <Route path="*" element={ <Navigate to="/" /> } />
+      <Route path="/" element={<Button variant="contained" color="primary" onClick={toggleDrawer}>Toggle Drawer</Button>} />
+      <Route path="/city" element={<Button variant="contained" color="primary" onClick={toggleDrawer}>Toggle Drawer</Button>} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };

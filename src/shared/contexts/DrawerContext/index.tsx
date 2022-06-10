@@ -6,7 +6,7 @@ import { IDrawerContextData, IDrawerOption, Props } from './interfaces';
 
 const DrawerContext = createContext<IDrawerContextData>({} as IDrawerContextData);
 
-const DrawerProvider: React.FC<Props> = ({ children })=> {
+const DrawerProvider: React.FC<Props> = ({ children }) => {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [drawerOptions, setDrawerOptions] = useState<IDrawerOption[]>([]);
@@ -18,9 +18,9 @@ const DrawerProvider: React.FC<Props> = ({ children })=> {
   const handleSetDrawerOptions = useCallback((newDrawerOptions: IDrawerOption[]) => {
     setDrawerOptions(newDrawerOptions);
   }, [drawerOptions]);
-  
+
   return (
-    <DrawerContext.Provider value={{isDrawerOpen, toggleDrawer, drawerOptions, setDrawerOptions: handleSetDrawerOptions  }}>
+    <DrawerContext.Provider value={{ isDrawerOpen, toggleDrawer, drawerOptions, setDrawerOptions: handleSetDrawerOptions }}>
       {children}
     </DrawerContext.Provider>
   );
@@ -31,4 +31,4 @@ const useDrawer = () => {
   return context;
 };
 
-export {useDrawer, DrawerProvider};
+export { useDrawer, DrawerProvider };

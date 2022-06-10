@@ -5,7 +5,7 @@ import { useDrawer } from '../../contexts';
 import { Props, IListItemLinkProps } from './interfaces';
 
 
-const ListItemLink: React.FC<IListItemLinkProps> = ({icon, label, to, onClick}) => {
+const ListItemLink: React.FC<IListItemLinkProps> = ({ icon, label, to, onClick }) => {
   const navigate = useNavigate();
 
   const resolvedPath = useResolvedPath(to);
@@ -16,7 +16,7 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({icon, label, to, onClick}) 
     onClick?.();
   };
 
-  return(
+  return (
     <ListItemButton
       selected={!!match}
       onClick={handleClick}
@@ -29,23 +29,23 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({icon, label, to, onClick}) 
   );
 };
 
-export const LateralMenu: React.FC<Props> = ({children}) => {
+export const LateralMenu: React.FC<Props> = ({ children }) => {
 
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   const { isDrawerOpen, toggleDrawer, drawerOptions, setDrawerOptions } = useDrawer();
 
-  return(
+  return (
     <>
-      <Drawer 
+      <Drawer
         open={isDrawerOpen}
-        variant={smDown ? 'temporary':'permanent'}
+        variant={smDown ? 'temporary' : 'permanent'}
         onClose={toggleDrawer}>
-        <Box 
+        <Box
           width={theme.spacing(28)}
-          height= '100%'
-          display= 'flex'
+          height='100%'
+          display='flex'
           flexDirection='column'>
           <Box
             sx={
@@ -57,18 +57,18 @@ export const LateralMenu: React.FC<Props> = ({children}) => {
                 justifyContent: 'center',
                 height: theme.spacing(20)
               }}>
-            <Avatar 
-              sx={ 
+            <Avatar
+              sx={
                 {
                   bgcolor: '#43a42f',
                   width: theme.spacing(12),
                   height: theme.spacing(12),
                   marginBottom: theme.spacing(2)
-                }}> 
+                }}>
               K
             </Avatar>
           </Box>
-          <Divider  />
+          <Divider />
           <Box
             sx={
               {
@@ -77,27 +77,27 @@ export const LateralMenu: React.FC<Props> = ({children}) => {
                 flexDirection: 'column',
               }
             }>
-            <List 
-              component="nav" 
-              aria-label="main mailbox folders" 
-              sx={{padding: 0}}>
+            <List
+              component="nav"
+              aria-label="main mailbox folders"
+              sx={{ padding: 0 }}>
 
-              { drawerOptions?.map(({icon, label, path}) => (
+              {drawerOptions?.map(({ icon, label, path }) => (
                 <ListItemLink
-                  key={path} 
+                  key={path}
                   icon={icon}
                   label={label}
                   to={path}
                   onClick={smDown ? toggleDrawer : undefined} />
-              )) }
+              ))}
 
             </List>
           </Box>
         </Box>
       </Drawer>
-      <Box marginLeft={ smDown ? 0 : theme.spacing(28)} >
+      <Box marginLeft={smDown ? 0 : theme.spacing(28)} >
         {children}
       </Box>
-    </> 
+    </>
   );
 };

@@ -1,11 +1,11 @@
 
-export interface Props{
+export interface Props {
   children: React.ReactNode
 }
 
-export interface IListItemLinkProps{
+export interface IListItemLinkProps {
   icon: string,
   label: string,
   to: string,
-  onClick: (() => void ) | undefined
+  onClick: (() => void) | undefined
 }

@@ -1,4 +1,4 @@
-export interface IDrawerContextData{
+export interface IDrawerContextData {
   isDrawerOpen: boolean;
   toggleDrawer: () => void;
   drawerOptions: IDrawerOption[];
@@ -9,7 +9,7 @@ export interface Props {
   children: React.ReactNode;
 };
 
-export interface IDrawerOption{
+export interface IDrawerOption {
   icon: string;
   path: string;
   label: string;
