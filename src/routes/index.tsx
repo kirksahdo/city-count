@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+import { Dashboard } from '../pages';
 import { useDrawer } from '../shared/contexts';
 
 export const AppRoutes = () => {
@@ -28,7 +29,7 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Button variant="contained" color="primary" onClick={toggleDrawer}>Toggle Drawer</Button>} />
+      <Route path="/" element={<Dashboard />} />
       <Route path="/city" element={<Button variant="contained" color="primary" onClick={toggleDrawer}>Toggle Drawer</Button>} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

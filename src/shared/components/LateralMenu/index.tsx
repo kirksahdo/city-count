@@ -95,7 +95,7 @@ export const LateralMenu: React.FC<Props> = ({ children }) => {
           </Box>
         </Box>
       </Drawer>
-      <Box marginLeft={smDown ? 0 : theme.spacing(28)} >
+      <Box height="100%" marginLeft={smDown ? 0 : theme.spacing(28)} >
         {children}
       </Box>
     </>
