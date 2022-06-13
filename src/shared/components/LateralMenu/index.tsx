@@ -34,7 +34,7 @@ export const LateralMenu: React.FC<Props> = ({ children }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const { isDrawerOpen, toggleDrawer, drawerOptions, setDrawerOptions } = useDrawer();
+  const { isDrawerOpen, toggleDrawer, drawerOptions } = useDrawer();
 
   return (
     <>
