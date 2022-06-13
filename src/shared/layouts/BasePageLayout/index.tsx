@@ -29,7 +29,6 @@ export const BasePageLayout: React.FC<IBasePageLayoutProps> = ({
           height: theme.spacing(smDown ? 6 : 8),
           display: 'flex',
           alignItems: 'center',
-          backgroundColor: theme.palette.background.paper,
           gap: 2,
         }}
       >
