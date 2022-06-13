@@ -1,4 +1,7 @@
+import { ReactNode } from 'react';
+
 export interface IBasePageLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
   title: string;
+  toolBar: ReactNode | undefined;
 }

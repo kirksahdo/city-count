@@ -13,6 +13,7 @@ import { IBasePageLayoutProps } from './interfaces';
 export const BasePageLayout: React.FC<IBasePageLayoutProps> = ({
   children,
   title,
+  toolBar,
 }) => {
   const theme = useTheme();
   const { toggleDrawer } = useDrawer();
@@ -25,21 +26,31 @@ export const BasePageLayout: React.FC<IBasePageLayoutProps> = ({
         sx={{
           paddingX: 3,
           paddingY: 1,
-          height: theme.spacing(12),
+          height: theme.spacing(smDown ? 6 : 8),
           display: 'flex',
           alignItems: 'center',
           backgroundColor: theme.palette.background.paper,
           gap: 2,
-        }}>
+        }}
+      >
         {smDown && (
           <IconButton onClick={toggleDrawer}>
             <Icon>menu</Icon>
           </IconButton>
         )}
-        <Typography variant="h5">{title}</Typography>
+        <Typography
+          variant={smDown ? 'h5' : 'h4'}
+          whiteSpace="nowrap"
+          overflow="hidden"
+          textOverflow="ellipsis"
+        >
+          {title}
+        </Typography>
       </Box>
-      <Box>Toolbar</Box>
-      <Box>{children}</Box>
+      {toolBar && <Box>{toolBar}</Box>}
+      <Box flex={1} overflow="auto">
+        {children}
+      </Box>
     </Box>
   );
 };
