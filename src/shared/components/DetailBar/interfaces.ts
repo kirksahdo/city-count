@@ -15,3 +15,15 @@ export interface IDetailBarProps{
   loadingSaveButton?: boolean;
   loadingSaveCloseButton?: boolean;
 }
+
+export interface IButtonProps{
+  label: string;
+  iconName: string;
+  variant: 'text' | 'outlined' | 'contained';
+  onClick?: () => void;
+  show: boolean;
+  loading: boolean;
+  width: number;
+  height: number;
+  divider?: boolean;
+}

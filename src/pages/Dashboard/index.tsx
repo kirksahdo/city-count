@@ -5,7 +5,7 @@ export const Dashboard: React.FC = () => {
   return (
     <BasePageLayout
       title="Dashboard"
-      toolBar={<DetailBar showSaveCloseButton loadingSaveCloseButton loadingSaveButton loadingBackButton loadingDeleteButton loadingNewButton />}>
+      toolBar={<DetailBar showSaveCloseButton />}>
       Test
     </BasePageLayout>
   );
