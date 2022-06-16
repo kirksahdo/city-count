@@ -9,4 +9,9 @@ export interface IDetailBarProps{
   onClickDelete?: () => void;
   onClickSave?: () => void;
   onClickSaveClose?: () => void;
+  loadingNewButton?: boolean;
+  loadingBackButton?: boolean;
+  loadingDeleteButton?: boolean;
+  loadingSaveButton?: boolean;
+  loadingSaveCloseButton?: boolean;
 }
