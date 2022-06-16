@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import { BasePageLayout } from '../../shared/layouts';
-import { AppBar } from '../../shared/components';
+import { ListingBar } from '../../shared/components';
 
 export const Dashboard: React.FC = () => {
   const [searchText, setSearchText] = useState('');
@@ -18,7 +18,7 @@ export const Dashboard: React.FC = () => {
     <BasePageLayout
       title="Dashboard"
       toolBar={
-        <AppBar
+        <ListingBar
           searchText={searchText}
           onChangeSearchText={handleSearch}
           onClickAdd={handleAdd}

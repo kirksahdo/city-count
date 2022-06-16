@@ -10,7 +10,7 @@ import {
 
 import { IAppBarProps } from './interfaces';
 
-export const AppBar: React.FC<IAppBarProps> = ({
+export const ListingBar: React.FC<IAppBarProps> = ({
   searchText = '',
   showInputSearch = false,
   onChangeSearchText,
