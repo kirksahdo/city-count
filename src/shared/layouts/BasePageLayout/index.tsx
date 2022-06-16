@@ -1,6 +1,8 @@
 import {
+  Divider,
   Icon,
   IconButton,
+  Paper,
   Typography,
   useMediaQuery,
   useTheme,
@@ -21,8 +23,10 @@ export const BasePageLayout: React.FC<IBasePageLayoutProps> = ({
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box height="100%" display="flex" flexDirection="column" gap={1}>
+    <Box height="100%" display="flex" flexDirection="column">
       <Box
+        component={Paper}
+        elevation={0}
         sx={{
           paddingX: 3,
           paddingY: 1,
@@ -45,8 +49,14 @@ export const BasePageLayout: React.FC<IBasePageLayoutProps> = ({
         >
           {title}
         </Typography>
-      </Box>
-      {toolBar && <Box>{toolBar}</Box>}
+      </Box>  
+      {toolBar && (
+        <>
+          <Divider />
+          <Box>{toolBar}</Box>
+        </>
+      )}
+      <Divider />
       <Box flex={1} overflow="auto">
         {children}
       </Box>
