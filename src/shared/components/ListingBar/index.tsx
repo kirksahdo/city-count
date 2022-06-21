@@ -8,13 +8,14 @@ import {
   useTheme,
 } from '@mui/material';
 
+import { Enviroment } from '../../environment';
 import { IAppBarProps } from './interfaces';
 
 export const ListingBar: React.FC<IAppBarProps> = ({
   searchText = '',
   showInputSearch = false,
   onChangeSearchText,
-  onClickAdd
+  onClickAdd,
 }) => {
   const theme = useTheme();
 
@@ -33,10 +34,10 @@ export const ListingBar: React.FC<IAppBarProps> = ({
       {showInputSearch && (
         <TextField
           type="search"
-          label="Search.."
+          label={Enviroment.SEARCH_INPUT}
           size="small"
           value={searchText}
-          onChange={(e) => onChangeSearchText?.(e.target.value)}
+          onChange={e => onChangeSearchText?.(e.target.value)}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
