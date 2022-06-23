@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import { Enviroment } from '../../../environment';
 import { api } from '../axios-config';
 import { IUserDetail, IUserListing, TUserWithTotalCount } from './interfaces';
@@ -24,8 +26,8 @@ const getAll = async (
   }
 };
 
-const getById = async (id: number): Promise<IUserDetail | Error> => {
-  try{
+const getById = async (id: string): Promise<IUserDetail | Error> => {
+  try {
     const relativeURL = `/users/${id}`;
     const { data } = await api.get(relativeURL);
     if (data) {
@@ -40,11 +42,34 @@ const getById = async (id: number): Promise<IUserDetail | Error> => {
     return new Error('User not found');
   } catch (error) {
     console.error(error);
-    return new Error((error as {message: string}).message || 'Registers error!');
+    return new Error(
+      (error as { message: string }).message || 'Registers error!',
+    );
   }
 };
 
-// const create = async (): Promise<any> => {};
+const create = async (
+  completeName: string,
+  email: string,
+  cityId: string,
+): Promise<IUserDetail | Error> => {
+  try {
+    const relativeURL = '/users';
+    const data = {
+      id: uuid(),
+      completeName,
+      email,
+      cityId
+    };
+    await api.post(relativeURL, data);
+    return data;
+  } catch (error) {
+    console.error(error);
+    return new Error(
+      (error as { message: string }).message || 'Error to create user!',
+    );
+  }
+};
 
 // const updateById = async (): Promise<any> => {};
 
@@ -53,7 +78,7 @@ const getById = async (id: number): Promise<IUserDetail | Error> => {
 export const userService = {
   getAll,
   getById,
-  // create,
+  create,
   // updateById,
   // deleteById,
 };

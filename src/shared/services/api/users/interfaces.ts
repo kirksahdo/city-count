@@ -4,15 +4,15 @@ export type TUserWithTotalCount = {
 }
 
 export interface IUserListing {
-  id: number;
+  id: string;
   completeName: string;
   email: string;
-  cityId: number;
+  cityId: string;
 }
 
 export interface IUserDetail {
-  id: number;
+  id: string;
   completeName: string;
   email: string;
-  cityId: number;
+  cityId: string;
 }
