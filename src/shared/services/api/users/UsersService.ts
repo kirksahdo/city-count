@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 
 import { Enviroment } from '../../../environment';
 import { api } from '../axios-config';
-import { IUserDetail, IUserListing, TUserWithTotalCount } from './interfaces';
+import { IUserDetail, TUserWithTotalCount } from './interfaces';
 
 const getAll = async (
   page = 1,
@@ -43,42 +43,72 @@ const getById = async (id: string): Promise<IUserDetail | Error> => {
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Registers error!',
+      (error as { message: string }).message || 'Error in user register!',
     );
   }
 };
 
 const create = async (
-  completeName: string,
-  email: string,
-  cityId: string,
-): Promise<IUserDetail | Error> => {
+  user: Omit<IUserDetail, 'id'>,
+): Promise<string | Error> => {
   try {
     const relativeURL = '/users';
-    const data = {
+    const { completeName, email, cityId } = user;
+    const userData = {
       id: uuid(),
       completeName,
       email,
-      cityId
+      cityId,
     };
-    await api.post(relativeURL, data);
-    return data;
+    const { data } = await api.post<IUserDetail>(relativeURL, userData);
+    if (data) {
+      return data.id;
+    }
+    return new Error('Error on create user!');
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Error to create user!',
+      (error as { message: string }).message || 'Error on create user!',
     );
   }
 };
 
-// const updateById = async (): Promise<any> => {};
+const updateById = async (user: IUserDetail): Promise<void | Error> => {
+  try {
+    const { id } = user;
+    const oldUserData = await getById(id);
+    if (oldUserData instanceof Error) throw oldUserData;
+    const relativeURL = `/users/${id}`;
+    const newUserData = {
+      completeName: user.completeName || oldUserData.completeName,
+      email: user.email || oldUserData.email,
+      cityId: user.cityId || oldUserData.cityId,
+    };
+    await api.put(relativeURL, newUserData);
+  } catch (error) {
+    console.error(error);
+    return new Error(
+      (error as { message: string }).message || 'Error on user update!',
+    );
+  }
+};
 
-// const deleteById = async (): Promise<any> => {};
+const deleteById = async (id: string): Promise<void | Error> => {
+  try {
+    const relativeURL = `/users/${id}`;
+    await api.delete(relativeURL);
+  } catch (error) {
+    console.error(error);
+    return new Error(
+      (error as { message: string }).message || 'Error on delete user!',
+    );
+  }
+};
 
 export const userService = {
   getAll,
   getById,
   create,
-  // updateById,
-  // deleteById,
+  updateById,
+  deleteById,
 };

@@ -102,11 +102,13 @@ export const DetailBar: React.FC<IDetailBarProps> = ({
       paddingX={2}>
       {smDown ? (
         <SplitButton
-          options={buttons.filter(button => button.show && !button.loading).map(button => ({
-            label: button.label,
-            onClick: () => button.onClick?.(),
-            iconName: button.iconName
-          }))}
+          options={buttons
+            .filter(button => button.show && !button.loading)
+            .map(button => ({
+              label: button.label,
+              onClick: () => button.onClick?.(),
+              iconName: button.iconName,
+            }))}
         />
       ) : (
         buttons &&

@@ -1,7 +1,7 @@
 export type TUserWithTotalCount = {
   data: IUserListing[];
-  totalCount: number
-}
+  totalCount: number;
+};
 
 export interface IUserListing {
   id: string;
@@ -12,7 +12,7 @@ export interface IUserListing {
 
 export interface IUserDetail {
   id: string;
-  completeName: string;
-  email: string;
-  cityId: string;
+  completeName?: string;
+  email?: string;
+  cityId?: string;
 }
