@@ -1,4 +1,4 @@
-export interface IDetailBarProps{
+export interface IDetailBarProps {
   showNewButton?: boolean;
   showBackButton?: boolean;
   showDeleteButton?: boolean;
@@ -9,14 +9,10 @@ export interface IDetailBarProps{
   onClickDelete?: () => void;
   onClickSave?: () => void;
   onClickSaveClose?: () => void;
-  loadingNewButton?: boolean;
-  loadingBackButton?: boolean;
-  loadingDeleteButton?: boolean;
-  loadingSaveButton?: boolean;
-  loadingSaveCloseButton?: boolean;
+  loading?: boolean;
 }
 
-export interface IButtonProps{
+export interface IButtonProps {
   label: string;
   iconName: string;
   variant: 'text' | 'outlined' | 'contained';
