@@ -28,7 +28,6 @@ export const ListingBar: React.FC<IAppBarProps> = ({
       elevation={0}
       gap={1}
       height={theme.spacing(5)}
-      marginX={1}
       padding={1}
       paddingX={2}>
       {showInputSearch && (
