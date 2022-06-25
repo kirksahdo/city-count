@@ -1,3 +1,10 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "sadads",
+      "email": "juca@gmail.com",
+      "completeName": "juca",
+      "cityId": "sadksad"
+    }
+  ]
 }
