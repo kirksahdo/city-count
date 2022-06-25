@@ -1,8 +1,8 @@
 import { Theme } from '@mui/material';
 
-export interface IThemeContextData{
+export interface IThemeContextData {
   theme: Theme;
-  toggleTheme: () => void
+  toggleTheme: () => void;
 }
 
 export interface Props {
