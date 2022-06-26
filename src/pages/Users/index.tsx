@@ -1,7 +1,7 @@
 import { useMemo, useEffect, useCallback, useState} from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { ListingBar } from '../../shared/components';
+import { ListingBar, UsersTable } from '../../shared/components';
 import { BasePageLayout } from '../../shared/layouts';
 import { TUserWithTotalCount } from '../../shared/services/api/users/interfaces';
 import { userService } from '../../shared/services/api/users/UsersService';
@@ -40,7 +40,7 @@ export const Users: React.FC = () => {
           showInputSearch
         />
       }>
-      <></>
+      <UsersTable data={users} />
     </BasePageLayout>
   );
 };
